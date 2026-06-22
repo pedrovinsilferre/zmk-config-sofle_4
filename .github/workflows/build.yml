@@ -20,19 +20,13 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        shield: [sofle_left, sofle_right]
+    uses: zmkfirmware/zmk/.github/workflows/build-user-config.yml@v2025.02
+    with:
+      board: nice_nano                     
+      shield: sofle_left                   
 
-    steps:
-      - name: Checkout código
-        uses: actions/checkout@v4
-
-      - name: Compilar firmware
-        uses: zmkfirmware/zmk-build-action@v3  
-        with:
-          board: nice_nano                      
-          shield: ${{ matrix.shield }}
-          zmk-version: "v2025.02"               
-          artifact-name: sofle_${{ matrix.shield }}
+  build_right:
+    uses: zmkfirmware/zmk/.github/workflows/build-user-config.yml@v2025.02
+    with:
+      board: nice_nano
+      shield: sofle_right
