@@ -19,14 +19,14 @@ on:
   workflow_dispatch:
 
 jobs:
-  build:
-    uses: zmkfirmware/zmk/.github/workflows/build-user-config.yml@v2025.02
+  build_left:
+    uses: zmkfirmware/zmk/.github/workflows/build-user-config.yml@v2024.11
     with:
-      board: nice_nano                     
-      shield: sofle_left                   
+      board: nice_nano
+      shield: sofle_left
 
   build_right:
-    uses: zmkfirmware/zmk/.github/workflows/build-user-config.yml@v2025.02
+    uses: zmkfirmware/zmk/.github/workflows/build-user-config.yml@v2024.11
     with:
       board: nice_nano
       shield: sofle_right
