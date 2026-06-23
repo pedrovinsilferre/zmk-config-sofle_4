@@ -18,7 +18,7 @@
 
         layer_base {
             display-name = "Base";
-            bindings = 
+            bindings = <
    &kp N6    &kp N7    &kp N8    &kp N9    &kp N0    &kp SQT
    &kp Y     &kp U     &kp I     &kp O     &kp P     &kp BSPC
    &kp H     &kp J     &kp K     &kp L     &kp SEMI  &kp DEL
@@ -29,7 +29,7 @@
 
         layer_sym {
             display-name = "Sym";
-            bindings = 
+            bindings = <
    &kp F7    &kp F8    &kp F9    &kp F10   &kp F11   &kp F12
    &kp PSCRN &kp K_APP &kp K_COPY &kp K_PASTE &kp K_FIND &kp K_CALC
    &kp PG_UP &kp UP    &kp PG_DN &kp HOME  &kp C_AC_SEARCH &kp C_EJECT
@@ -40,7 +40,7 @@
 
         layer_func {
             display-name = "Func";
-            bindings = 
+            bindings = <
    &kp F13   &kp F14   &kp F15   &kp F16   &kp F17   &kp F18
    &kp F19   &kp F20   &kp F21   &kp F22   &kp F23   &kp F24
    &kp C_VOL_DN &kp C_AC_STOP &kp C_VOL_UP &none  &none  &none
@@ -51,7 +51,7 @@
 
         layer_mse {
             display-name = "Mouse";
-            bindings = 
+            bindings = <
    &trans  &trans  &trans  &trans       &msc SCRL_UP    &trans
    &trans  &mkp MB3  &msc SCRL_LEFT  &msc SCRL_DOWN  &msc SCRL_RIGHT  &trans
    &trans  &mkp MB4  &mkp MB1  &mmv MOVE_UP    &mkp MB2  &trans
@@ -62,7 +62,7 @@
 
         layer_adj {
             display-name = "Adj";
-            bindings = 
+            bindings = <
    &bl BL_ON   &bl BL_INC   &rgb_ug RGB_EFF  &rgb_ug RGB_HUI  &rgb_ug RGB_SAI  &rgb_ug RGB_BRI
    &bl BL_OFF  &bl BL_DEC   &rgb_ug RGB_EFR  &rgb_ug RGB_HUD  &rgb_ug RGB_SAD  &rgb_ug RGB_BRD
    &bl BL_TOG  &bl BL_CYCLE &rgb_ug RGB_SPI  &none  &none  &none
