@@ -16,68 +16,58 @@
     keymap {
         compatible = "zmk,keymap";
 
-        // Camada Base
         layer_base {
             display-name = "Base";
-            bindings = <
-// ╔═══════════ Fileira superior (6 teclas) ═══════════╗
+            bindings = 
    &kp N6    &kp N7    &kp N8    &kp N9    &kp N0    &kp SQT
-// ╔═══════════ 2ª fileira (6 teclas) ═════════════════╗
    &kp Y     &kp U     &kp I     &kp O     &kp P     &kp BSPC
-// ╔═══════════ 3ª fileira (6 teclas) ═════════════════╗
    &kp H     &kp J     &kp K     &kp L     &kp SEMI  &kp DEL
-// ╔═ Polegar interno + fileira inferior principal (7 teclas) ═╗
-   &lt FUNC ENTER   &kp N     &kp M     &kp COMMA &kp DOT   &kp FSLH  &kp RSHFT
-// ╔═══════════ Polegares externos (5 teclas) ═════════╗
-   &lt SYM ENTER   &kp SPACE &kp RCTRL &kp RALT  &kp K_APP
+   &lt FUNC ENTER  &kp N  &kp M  &kp COMMA  &kp DOT  &kp FSLH  &kp RSHFT
+   &lt SYM ENTER   &kp SPACE  &kp RCTRL  &kp RALT  &kp K_APP
             >;
         };
 
-        // Camada Símbolos / Navegação
         layer_sym {
             display-name = "Sym";
-            bindings = <
+            bindings = 
    &kp F7    &kp F8    &kp F9    &kp F10   &kp F11   &kp F12
    &kp PSCRN &kp K_APP &kp K_COPY &kp K_PASTE &kp K_FIND &kp K_CALC
    &kp PG_UP &kp UP    &kp PG_DN &kp HOME  &kp C_AC_SEARCH &kp C_EJECT
-   &none     &kp LEFT  &kp DOWN  &kp RIGHT &kp END   &none     &none
+   &none     &kp LEFT  &kp DOWN  &kp RIGHT &kp END   &none  &none
    &none     &none     &none     &none     &none
             >;
         };
 
-        // Camada Função / Mídia
         layer_func {
             display-name = "Func";
-            bindings = <
+            bindings = 
    &kp F13   &kp F14   &kp F15   &kp F16   &kp F17   &kp F18
    &kp F19   &kp F20   &kp F21   &kp F22   &kp F23   &kp F24
-   &kp C_VOL_DN &kp C_AC_STOP &kp C_VOL_UP &none   &none   &none
-   &none     &kp C_RW  &kp C_EJECT &kp C_FF  &none   &none     &none
+   &kp C_VOL_DN &kp C_AC_STOP &kp C_VOL_UP &none  &none  &none
+   &none     &kp C_RW  &kp C_EJECT &kp C_FF  &none  &none  &none
    &tog ADJ  &none     &none     &none     &none
             >;
         };
 
-        // Camada Mouse / Numpad
         layer_mse {
             display-name = "Mouse";
-            bindings = <
-   &trans    &trans    &trans    &trans    &msc 10   &trans
-   &trans    &mkp MB3  &msc (-10 << 16) &msc -10  &msc (10 << 16) &trans
-   &trans    &mkp MB4  &mkp MB1  &mmv MOVE_UP(600)  &mkp MB2  &trans
-   &none     &mmv MOVE_LEFT(600) &mmv MOVE_DOWN(600) &mmv MOVE_RIGHT(600) &none &none &none
-   &to BASE  &none     &none     &none     &none
+            bindings = 
+   &trans  &trans  &trans  &trans       &msc SCRL_UP    &trans
+   &trans  &mkp MB3  &msc SCRL_LEFT  &msc SCRL_DOWN  &msc SCRL_RIGHT  &trans
+   &trans  &mkp MB4  &mkp MB1  &mmv MOVE_UP    &mkp MB2  &trans
+   &none   &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_RIGHT  &none  &none  &none
+   &to BASE  &none  &none  &none  &none
             >;
         };
 
-        // Camada Ajustes (RGB/Backlight/Bluetooth)
         layer_adj {
             display-name = "Adj";
-            bindings = <
-   &bl BL_ON   &bl BL_INC  &rgb_ug RGB_EFF &rgb_ug RGB_HUI &rgb_ug RGB_SAI &rgb_ug RGB_BRI
-   &bl BL_OFF  &bl BL_DEC  &rgb_ug RGB_EFR &rgb_ug RGB_HUD &rgb_ug RGB_SAD &rgb_ug RGB_BRD
-   &bl BL_TOG  &bl BL_CYCLE &rgb_ug RGB_SPI &none  &none  &none
-   &none       &none       &none       &none       &none &none &none
-   &to BASE    &none       &none       &none       &none
+            bindings = 
+   &bl BL_ON   &bl BL_INC   &rgb_ug RGB_EFF  &rgb_ug RGB_HUI  &rgb_ug RGB_SAI  &rgb_ug RGB_BRI
+   &bl BL_OFF  &bl BL_DEC   &rgb_ug RGB_EFR  &rgb_ug RGB_HUD  &rgb_ug RGB_SAD  &rgb_ug RGB_BRD
+   &bl BL_TOG  &bl BL_CYCLE &rgb_ug RGB_SPI  &none  &none  &none
+   &none       &none        &none            &none  &none  &none  &none
+   &to BASE    &none        &none            &none  &none
             >;
         };
     };
