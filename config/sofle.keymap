@@ -62,5 +62,26 @@
 
             sensor-bindings = <&inc_dec_kp C_AC_DEL BACKSPACE>;
         };
+chosen {
+        zmk,backlight = &backlight;
+        zmk,underglow = &led_strip;
+    };
+
+    backlight: pwmleds {
+        compatible = "pwm-leds";
+        pwm_led_0 {
+            pwms = <&pwm0 1 1000000 PWM_POLARITY_NORMAL>;
+        };
+    };
+
+    led_strip: ws2812 {
+        compatible = "worldsemi,ws2812";
+        pin = <YOUR_GPIO_PIN>;
+        num-leds = <YOUR_LED_COUNT>;
+        chain-length = <YOUR_CHAIN_LENGTH>;
+    };
+};
+
+
     };
 };
