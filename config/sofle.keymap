@@ -76,9 +76,9 @@ chosen {
 
     led_strip: ws2812 {
         compatible = "worldsemi,ws2812";
-        pin = <YOUR_GPIO_PIN>;
-        num-leds = <YOUR_LED_COUNT>;
-        chain-length = <YOUR_CHAIN_LENGTH>;
+        pin = <&gpio0 17>;
+        num-leds = <72>;
+        chain-length = <72>;
     };
 };
 
