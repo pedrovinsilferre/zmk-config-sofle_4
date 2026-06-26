@@ -37,7 +37,7 @@
 &none           &kp UNDER  &kp SQT     &kp LS(MINUS)  &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS                       &kp PRINTSCREEN  &kp PIPE      &kp LPAR       &kp RPAR  &kp COMMA  &kp DOT
 &none           &kp TILDE  &kp LALT    &kp LCTRL      &kp LEFT_BRACKET      &kp RIGHT_BRACKET                           &kp PAGE_UP      &kp UP_ARROW  &kp PAGE_DOWN  &kp HOME  &kp F11    &kp F12
 &kp LEFT_SHIFT  &kp K_APP  &kp K_COPY  &kp K_PASTE    &kp COMMA             &kp PERIOD             &kp PG_UP    &kp UP  &kp LEFT         &kp DOWN      &kp RIGHT      &kp END   &none      &kp LEFT
-                           &none       &none          &kp END               &none                  &none        &none   &none            &none         &none          &none
+                            &none       &none          &kp END               &none                  &none        &none   &none            &none         &none          &none
             >;
         };
 
@@ -53,16 +53,18 @@
 
         layer_bl_lg {
             bindings = <
-&rgb_ug RGB_TOG                    &rgb_ug RGB_ON   &rgb_ug RGB_HUI  &rgb_ug RGB_SAI  &rgb_ug RGB_BRI  &rgb_ug RGB_SPI                    &bt BT_CLR  &bt BT_CLR_ALL  &trans  &bt BT_SEL 0  &bt BT_DISC 0  &bt BT_SEL 4
-&rgb_ug RGB_COLOR_HSB(208,100,50)  &rgb_ug RGB_OFF  &rgb_ug RGB_HUD  &rgb_ug RGB_SAD  &rgb_ug RGB_BRD  &rgb_ug RGB_SPD                    &bt BT_NXT  &bt BT_PRV      &trans  &bt BT_SEL 1  &bt BT_DISC 1  &bt BT_DISC 4
-&rgb_ug RGB_EFF                    &bl BL_ON        &bl BL_INC       &bl BL_CYCLE     &bl BL_TOG       &trans                             &trans      &trans          &trans  &bt BT_SEL 2  &bt BT_DISC 2  &trans
-&rgb_ug RGB_EFR                    &bl BL_OFF       &bl BL_DEC       &bl BL_SET 30    &trans           &trans           &trans    &trans  &trans      &trans          &trans  &bt BT_SEL 3  &bt BT_DISC 3  &trans
-                                                    &trans           &trans           &trans           &trans           &to 0     &trans  &trans      &trans          &trans  &trans
+&rgb_ug RGB_TOG                    &rgb_ug RGB_ON   &rgb_ug RGB_HUI  &rgb_ug RGB_SAI  &rgb_ug RGB_BRI  &rgb_ug RGB_SPI                    &bt BT_CLR  &bt BT_CLR_ALL  &trans  &bt BT_SEL 0  &bt BT_D[...]
+&rgb_ug RGB_COLOR_HSB(208,100,50)  &rgb_ug RGB_OFF  &rgb_ug RGB_HUD  &rgb_ug RGB_SAD  &rgb_ug RGB_BRD  &rgb_ug RGB_SPD                    &bt BT_NXT  &bt BT_PRV      &trans  &bt BT_SEL 1  &bt BT_D[...]
+&rgb_ug RGB_EFF                    &bl BL_ON        &bl BL_INC       &bl BL_CYCLE     &bl BL_TOG       &trans                             &trans      &trans          &trans  &bt BT_SEL 2  &bt BT_D[...]
+&rgb_ug RGB_EFR                    &bl BL_OFF       &bl BL_DEC       &bl BL_SET 30    &trans           &trans           &trans    &trans  &trans      &trans          &trans  &bt BT_SEL 3  &bt BT_D[...]
+                                                     &trans           &trans           &trans           &trans           &to 0     &trans  &trans      &trans          &trans  &trans
             >;
 
             sensor-bindings = <&inc_dec_kp C_AC_DEL BACKSPACE>;
         };
-chosen {
+    };
+
+    chosen {
         zmk,backlight = &backlight;
         zmk,underglow = &led_strip;
     };
@@ -81,6 +83,3 @@ chosen {
         chain-length = <72>;
     };
 };
-
-
-    };
