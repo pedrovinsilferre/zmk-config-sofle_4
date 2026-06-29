@@ -1,3 +1,13 @@
+/*
+ * sofle.keymap
+ *
+ * Apenas definições de layers e bindings.
+ * Hardware (underglow, backlight) foi movido para config/sofle.overlay
+ *
+ * Controlador: SuperMini NRF52840 (nice_nano_v2 compatible)
+ * Shield     : Sofle RGB
+ */
+
 #include <dt-bindings/zmk/mouse.h>
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/backlight.h>
@@ -16,6 +26,7 @@
     keymap {
         compatible = "zmk,keymap";
 
+        /* ── Layer 0 : QWERTY Base ─────────────────────────────── */
         layer_Qwerty {
             display-name = "Base";
             bindings = <
@@ -31,6 +42,7 @@
                 <&inc_dec_kp PAGE_UP PAGE_DOWN>;
         };
 
+        /* ── Layer 1 : Symbols / Navigation ────────────────────── */
         layer_sym {
             display-name = "Sym";
             bindings = <
@@ -38,11 +50,13 @@
 &none           &kp UNDER  &kp SQT     &kp LS(MINUS)  &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS                       &kp PRINTSCREEN  &kp PIPE      &kp LPAR       &kp RPAR  &kp COMMA  &kp DOT
 &none           &kp TILDE  &kp LALT    &kp LCTRL      &kp LEFT_BRACKET      &kp RIGHT_BRACKET                           &kp PAGE_UP      &kp UP_ARROW  &kp PAGE_DOWN  &kp HOME  &kp F11    &kp F12
 &kp LEFT_SHIFT  &kp K_APP  &kp K_COPY  &kp K_PASTE    &kp COMMA             &kp PERIOD             &kp PG_UP    &kp UP  &kp LEFT         &kp DOWN      &kp RIGHT      &kp END   &none      &kp LEFT
-                           &none       &none          &kp END               &none                  &none        &none   &none            &none         &none          &none
+                           &none       &none           &kp END               &none                  &none        &none   &none            &none         &none          &none
             >;
         };
 
+        /* ── Layer 2 : Mouse / Numpad ───────────────────────────── */
         layer_mscNum {
+            display-name = "mscNum";
             bindings = <
 &trans  &trans  &trans  &mkp MB4        &msc SCRL_UP    &mkp MB5                           &kp KP_PLUS      &kp KP_DIVIDE    &kp KP_SUBTRACT  &kp KP_MULTIPLY  &trans  &trans
 &trans  &trans  &trans  &msc SCRL_LEFT  &msc SCRL_DOWN  &msc SCRL_RIGHT                    &kp KP_NUMBER_7  &kp KP_NUMBER_8  &kp KP_NUMBER_9  &trans           &trans  &trans
@@ -52,34 +66,20 @@
             >;
         };
 
+        /* ── Layer 3 : RGB / Bluetooth / Backlight ─────────────── */
         layer_bl_lg {
+            display-name = "bl_lig";
             bindings = <
 &rgb_ug RGB_TOG  &rgb_ug RGB_ON   &rgb_ug RGB_HUI  &rgb_ug RGB_SAI  &rgb_ug RGB_BRI  &rgb_ug RGB_SPI                    &bt BT_CLR  &bt BT_CLR_ALL  &bt BT_SEL 0  &bt BT_DISC 0  &bt BT_SEL 4  &bt BT_DISC 4
 &rgb_ug RGB_OFF  &rgb_ug RGB_HUD  &rgb_ug RGB_SAD  &rgb_ug RGB_BRD  &rgb_ug RGB_SPD  &bt BT_NXT                         &bt BT_PRV  &bt BT_NXT      &bt BT_SEL 1  &bt BT_DISC 1  &none         &none
 &bl BL_INC       &bl BL_CYCLE     &bl BL_TOG       &trans           &trans           &trans                             &none       &none           &bt BT_SEL 2  &bt BT_DISC 2  &none         &none
-&bl BL_SET 30    &trans           &trans           &trans           &trans           &trans           &trans    &trans  &none       &none           &bt BT_SEL 3  &bt BT_DISC 3  &none         &none
-                                  &none            &trans           &trans           &trans           &to 0     &trans
+&bl BL_SET 30    &trans           &trans           &trans           &trans           &trans           &trans    &trans   &none       &none           &bt BT_SEL 3  &bt BT_DISC 3  &none         &none
+                                  &none            &trans           &trans           &trans           &to 0     &trans   &none       &none           &none         &none
             >;
 
-            sensor-bindings = <&inc_dec_kp C_AC_DEL BACKSPACE>;
+            sensor-bindings =
+                <&inc_dec_kp C_AC_DEL BACKSPACE>,
+                <&inc_dec_kp C_VOLUME_UP C_VOLUME_DOWN>;
         };
-    };
-
-    chosen {
-        zmk,backlight = &backlight;
-        zmk,underglow = &led_strip;
-    };
-
-    backlight: pwmleds {
-        compatible = "pwm-leds";
-
-        pwm_led_0 { pwms = <&pwm0 1 1000000 PWM_POLARITY_NORMAL>; };
-    };
-
-    led_strip: ws2812 {
-        compatible = "worldsemi,ws2812";
-        pin = <&gpio0 17>;
-        num-leds = <72>;
-        chain-length = <72>;
     };
 };
