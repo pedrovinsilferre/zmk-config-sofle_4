@@ -1,19 +1,15 @@
 ---
 include:
-  # Sofle Left - PERIFÉRICO
   - board: nice_nano
     shield: sofle_left
     cmake-args: -DCONFIG_ZMK_SPLIT=y -DCONFIG_ZMK_SPLIT_ROLE_CENTRAL=n
 
-  # Sofle Right - PERIFÉRICO
   - board: nice_nano
     shield: sofle_right
     cmake-args: -DCONFIG_ZMK_SPLIT=y -DCONFIG_ZMK_SPLIT_ROLE_CENTRAL=n
 
-  # SOFLE DONGLE - CENTRAL (conectado via USB)
   - board: nice_nano
     shield: sofle_dongle
 
-  # Reset (para emergências)
   - board: nice_nano
     shield: settings_reset
