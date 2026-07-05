@@ -1,0 +1,17 @@
+/dts-v1/;
+/ {
+    chosen {
+        zephyr,display = &display0;
+    };
+};
+
+&i2c0 {
+    display0: ssd1306@3c {
+        compatible = "solomon,ssd1306";
+        reg = <0x3c>;
+        label = "SSD1306_0";
+        width = <128>;
+        height = <32>;
+        status = "okay";
+    };
+};
