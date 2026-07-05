@@ -28,6 +28,7 @@
         compatible = "zmk,keymap";
 
         /* ── Layer 0 : QWERTY Base ─────────────────────────────── */
+
         layer_Qwerty {
             display-name = "Base";
             bindings = <
@@ -44,18 +45,20 @@
         };
 
         /* ── Layer 1 : Symbols / Navigation ────────────────────── */
+
         layer_sym {
             display-name = "Sym";
             bindings = <
-&kp F1          &kp F2     &kp F3      &kp F4         &kp F5                &kp F6                                      &kp F7           &kp F8        &kp F9         &kp F10   &kp F11    &kp F12
-&none           &kp UNDER  &kp SQT     &kp LS(MINUS)  &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS                       &kp PRINTSCREEN  &kp PIPE      &kp LPAR       &kp RPAR  &kp COMMA  &kp DOT
-&none           &kp TILDE  &kp LALT    &kp LCTRL      &kp LEFT_BRACKET      &kp RIGHT_BRACKET                           &kp PAGE_UP      &kp UP_ARROW  &kp PAGE_DOWN  &kp HOME  &kp F11    &kp F12
-&kp LEFT_SHIFT  &kp K_APP  &kp K_COPY  &kp K_PASTE    &kp COMMA             &kp PERIOD             &kp PG_UP    &kp UP  &kp LEFT         &kp DOWN      &kp RIGHT      &kp END   &none      &kp LEFT
-                           &none       &none           &kp END               &none                  &none        &none   &none            &none         &none          &none
+&kp F1          &kp F2     &kp F3        &kp F4                &kp F5                &kp F6                                   &kp F7           &kp F8        &kp F9         &kp F10   &kp F11  &kp F12
+&none           &kp UNDER  &kp SQT       &kp MINUS             &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS                    &kp PRINTSCREEN  &none         &none          &none     &none    &none
+&none           &kp TILDE  &kp QUESTION  &kp CARET             &kp LEFT_BRACKET      &kp RIGHT_BRACKET                        &kp PAGE_UP      &kp UP_ARROW  &kp PAGE_DOWN  &kp HOME  &none    &none
+&kp LEFT_SHIFT  &kp PIPE   &kp EQUAL     &kp SEMICOLON         &kp COMMA             &kp PERIOD             &trans    &trans  &kp LEFT         &kp DOWN      &kp RIGHT      &kp END   &none    &kp RIGHT_SHIFT
+                           &kp SLASH     &kp NON_US_BACKSLASH  &none                 &none                  &none     &none   &none            &none         &none          &none
             >;
         };
 
         /* ── Layer 2 : Mouse / Numpad ───────────────────────────── */
+
         layer_mscNum {
             display-name = "mscNum";
             bindings = <
@@ -68,14 +71,15 @@
         };
 
         /* ── Layer 3 : RGB / Bluetooth / Backlight ─────────────── */
+
         layer_bl_lg {
             display-name = "bl_lig";
             bindings = <
 &rgb_ug RGB_TOG  &rgb_ug RGB_ON   &rgb_ug RGB_HUI  &rgb_ug RGB_SAI  &rgb_ug RGB_BRI  &rgb_ug RGB_SPI                    &bt BT_CLR  &bt BT_CLR_ALL  &bt BT_SEL 0  &bt BT_DISC 0  &bt BT_SEL 4  &bt BT_DISC 4
 &rgb_ug RGB_OFF  &rgb_ug RGB_HUD  &rgb_ug RGB_SAD  &rgb_ug RGB_BRD  &rgb_ug RGB_SPD  &bt BT_NXT                         &bt BT_PRV  &bt BT_NXT      &bt BT_SEL 1  &bt BT_DISC 1  &none         &none
 &bl BL_INC       &bl BL_CYCLE     &bl BL_TOG       &trans           &trans           &trans                             &none       &none           &bt BT_SEL 2  &bt BT_DISC 2  &none         &none
-&bl BL_SET 30    &trans           &trans           &trans           &trans           &trans           &trans    &trans   &none       &none           &bt BT_SEL 3  &bt BT_DISC 3  &none         &none
-                                  &none            &trans           &trans           &trans           &to 0     &trans   &none       &none           &none         &none
+&bl BL_SET 30    &trans           &trans           &trans           &trans           &trans           &trans    &trans  &none       &none           &bt BT_SEL 3  &bt BT_DISC 3  &none         &none
+                                  &none            &trans           &trans           &trans           &to 0     &trans  &none       &none           &none         &none
             >;
 
             sensor-bindings =
