@@ -10,9 +10,14 @@ include:
 
   - board: nice_nano
     shield: sofle_dongle
-    cmake-args: > -DCONFIG_ZMK_SPLIT=y -DCONFIG_ZMK_SPLIT_ROLE_CENTRAL=y -DCONFIG_ZMK_DISPLAY=n
--DCONFIG_USB_DEVICE_STACK=y -DCONFIG_USB_CDC_ACM=y
--DCONFIG_CONSOLE=y -DCONFIG_PRINTK=y
+    cmake-args: >
+      -DCONFIG_ZMK_SPLIT=y
+      -DCONFIG_ZMK_SPLIT_ROLE_CENTRAL=y
+      -DCONFIG_ZMK_DISPLAY=n
+      -DCONFIG_USB_DEVICE_STACK=y
+      -DCONFIG_USB_CDC_ACM=y
+      -DCONFIG_CONSOLE=y
+      -DCONFIG_PRINTK=y
 
   - board: nice_nano
     shield: settings_reset
