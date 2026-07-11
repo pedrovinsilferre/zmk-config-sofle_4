@@ -11,10 +11,12 @@ include:
   - board: nice_nano
     shield: sofle_dongle
     cmake-args: >
-       -DCONFIG_ZMK_SPLIT=y 
-       -DCONFIG_ZMK_SPLIT_ROLE_CENTRAL=y 
-       -DCONFIG_ZMK_DISPLAY=n 
-       -DCONFIG_USB_DEVICE_STACK=y
+       -DCONFIG_ZMK_DISPLAY=n
+       -CONFIG_ZMK_SPLIT=y
+       -CONFIG_ZMK_SPLIT_ROLE_CENTRAL=y
+       -CONFIG_ZMK_SPLIT_BLE_CENTRAL_PERIPHERALS=2
+       -CONFIG_ZMK_USB=y
+       -CONFIG_ZMK_BLE=n # Use 2.4G RF instead of host Bluetooth
        
   - board: nice_nano
     shield: settings_reset
