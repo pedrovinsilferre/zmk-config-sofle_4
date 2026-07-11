@@ -9,8 +9,9 @@ config ZMK_SPLIT
 config ZMK_SPLIT_ROLE_CENTRAL
     default y
 
+# Desliga BLE por padrão; ativaremos rádio 2.4GHz quando soubermos o símbolo exato
 config ZMK_SPLIT_BLE
-    default y
+    default n
 
 config ZMK_SPLIT_BLE_CENTRAL_PERIPHERALS
     default 2
