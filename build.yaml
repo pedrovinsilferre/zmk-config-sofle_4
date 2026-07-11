@@ -16,7 +16,7 @@ include:
        -CONFIG_ZMK_SPLIT_ROLE_CENTRAL=y
        -CONFIG_ZMK_SPLIT_BLE_CENTRAL_PERIPHERALS=2
        -CONFIG_ZMK_USB=y
-       -CONFIG_ZMK_BLE=n # Use 2.4G RF instead of host Bluetooth
+       -CONFIG_ZMK_BLE=n
        
   - board: nice_nano
     shield: settings_reset
