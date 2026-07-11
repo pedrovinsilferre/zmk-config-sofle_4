@@ -12,11 +12,11 @@ include:
     shield: sofle_dongle
     cmake-args: >
        -DCONFIG_ZMK_DISPLAY=n
-       -CONFIG_ZMK_SPLIT=y
-       -CONFIG_ZMK_SPLIT_ROLE_CENTRAL=y
-       -CONFIG_ZMK_SPLIT_BLE_CENTRAL_PERIPHERALS=2
-       -CONFIG_ZMK_USB=y
-       -CONFIG_ZMK_BLE=n
+       -DCONFIG_ZMK_SPLIT=y
+       -DCONFIG_ZMK_SPLIT_ROLE_CENTRAL=y
+       -DCONFIG_ZMK_SPLIT_BLE_CENTRAL_PERIPHERALS=2
+       -DCONFIG_ZMK_USB=y
+       -DCONFIG_ZMK_BLE=n
        
   - board: nice_nano
     shield: settings_reset
