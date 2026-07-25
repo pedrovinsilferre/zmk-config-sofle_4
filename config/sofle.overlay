@@ -1,11 +1,22 @@
 /*
- * sofle_left.overlay
+ * sofle.overlay
  *
- * Hardware overlay para Sofle RGB - Lado Esquerdo
- * Inclui SPI3 (underglow), PWM0 (backlight), Display
+ * Hardware overlay para Sofle RGB com SuperMini NRF52840
+ * (compatível com nice!nano v2 — compile com -b nice_nano)
+ *
+ * Coloque em: config/sofle.overlay
+ *
+ * Underglow : WS2812 via SPI3, pino MOSI = P0.06 (D1 / Pro Micro)
+ * Backlight : PWM0, canal PWM_OUT0, pino P1.13 (padrão nice!nano)
+ *
+ * NOTA Zephyr 4.1: CONFIG_WS2812_STRIP não existe mais —
+ * o driver é selecionado automaticamente por este overlay.
  */
 #include <dt-bindings/led/led.h>
 
+/* ─────────────────────────────────────────────────────────────
+   1. PIN CONTROL
+   ───────────────────────────────────────────────────────────── */
 &pinctrl {
     /* SPI3 — pino de dados do underglow (MOSI = P0.06) */
     spi3_default: spi3_default {
@@ -19,6 +30,7 @@
             low-power-enable;
         };
     };
+
     /* PWM0 — backlight (P1.13) */
     pwm0_default: pwm0_default {
         group1 {
@@ -33,6 +45,9 @@
     };
 };
 
+/* ─────────────────────────────────────────────────────────────
+   2. SPI3 — fita WS2812 (underglow)
+   ───────────────────────────────────────────────────────────── */
 &spi3 {
     compatible = "nordic,nrf-spim";
     status = "okay";
@@ -41,12 +56,18 @@
     pinctrl-names = "default", "sleep";
     led_strip: ws2812@0 {
         compatible = "worldsemi,ws2812-spi";
-        reg = <0>;
-        spi-max-frequency = <4000000>;
-        chain-length = <36>;
+
+        /* SPI */
+        reg = <0>;                      /* ignorado, mas obrigatório */
+        spi-max-frequency = <4000000>;  /* 4 MHz */
+        /* WS2812 */
+        chain-length = <72>;            /* total de LEDs RGB */
         spi-one-frame  = <0x70>;
         spi-zero-frame = <0x40>;
-        color-mapping = 
+
+        /* Ordem GRB — padrão WS2812/SK6812.
+           Se as cores aparecerem trocadas, altere para RGB abaixo: */
+        color-mapping = <
             LED_COLOR_ID_GREEN
             LED_COLOR_ID_RED
             LED_COLOR_ID_BLUE
@@ -54,6 +75,9 @@
     };
 };
 
+/* ─────────────────────────────────────────────────────────────
+   3. PWM0 — backlight
+   ───────────────────────────────────────────────────────────── *
 &pwm0 {
     status = "okay";
     pinctrl-0 = <&pwm0_default>;
@@ -61,6 +85,9 @@
     pinctrl-names = "default", "sleep";
 };
 
+/* ─────────────────────────────────────────────────────────────
+   4. ROOT — chosen + backlight node
+   ───────────────────────────────────────────────────────────── */
 / {
     chosen {
         zmk,underglow = &led_strip;
@@ -69,6 +96,8 @@
     backlight: pwmleds {
         compatible = "pwm-leds";
         pwm_led_0 {
+            /* Canal 0 = PWM_OUT0 definido no pinctrl acima.
+               Período 10 ms (100 Hz). */
             pwms = <&pwm0 0 PWM_MSEC(10) PWM_POLARITY_NORMAL>;
         };
     };
